@@ -1,0 +1,44 @@
+{
+  "name": "rimu-tools",
+  "author": "Stuart Rackham <srackham@gmail.com>",
+  "version": "1.0.0",
+  "description": "Tools for editing and processing Rimu Markup",
+  "keywords": [
+    "rimu",
+    "markup",
+    "markdown"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/srackham/rimu-tools/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">=0.8"
+  },
+  "bin": {
+    "rimuc": "bin/rimuc.js"
+  },
+  "files": [
+    "bin/rimuc.js",
+    "bin/header.rmu",
+    "bin/footer.rmu"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srackham/rimu-tools.git"
+  },
+  "dependencies": {
+    "rimu": "^6.0.0"
+  },
+  "devDependencies": {
+    "tslint": "^2.4.2",
+    "typescript": "^1.5.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint src/rimuc.ts",
+    "test": "mocha test/"
+  }
+}
