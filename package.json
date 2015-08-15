@@ -33,12 +33,18 @@
     "rimu": "^6.0.0"
   },
   "devDependencies": {
+    "faucet": "0.0.1",
+    "nodemon": "^1.4.1",
+    "tape": "^4.2.0",
     "tslint": "^2.4.2",
     "typescript": "^1.5.3"
   },
   "scripts": {
     "build": "tsc",
+    "build:watch": "tsc --watch",
     "lint": "tslint src/rimuc.ts",
-    "test": "mocha test/"
+    "test": "node test/test.js | faucet",
+    "test:watch": "nodemon --ext js --watch test --watch bin --exec 'npm run test'",
+    "watch": "npm run build:watch & npm run test:watch"
   }
 }
