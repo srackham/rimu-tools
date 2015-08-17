@@ -40,7 +40,7 @@
     "typescript": "^1.5.3"
   },
   "scripts": {
-    "build": "parallelshell 'tsc' 'tslint src/rimuc.ts'",
+    "build": "parallelshell 'tsc' 'tslint src/rimuc.ts' && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
     "build:watch": "nodemon --ext ts --watch src --exec 'npm run build'",
     "test": "node test/test.js | faucet",
     "test:watch": "nodemon --ext js --watch test --watch bin --exec 'npm run test'",

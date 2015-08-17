@@ -4,7 +4,7 @@ var exec = require('child_process').exec;
 function rimuc_exec(source, options, callback) {
   source = source.replace(/\n/g, '\\n');
   source = source.replace(/"/g, '\\x22');
-  var command = '`which echo` -e "' + source + '" | node ./bin/rimuc.js --no-rimurc ' + (options || '');
+  var command = '`which echo` -e "' + source + '" | ./bin/rimuc.js --no-rimurc ' + (options || '');
   exec(command, function(error, stdout, stderr) {
     callback(stdout);
   })

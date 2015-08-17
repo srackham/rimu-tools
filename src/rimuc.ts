@@ -1,7 +1,5 @@
-// Looks like shebang lines are allowed as of 7/8/15:
-// https://github.com/Microsoft/TypeScript/issues/2749
-// https://github.com/Microsoft/TypeScript/search?utf8=%E2%9C%93&q=shebangtrivia&type=Code
 // #!/usr/bin/env node
+// Leading `// ` in first line removed by sed command in `npm run build` script after compilation.
 
 /*
   Command-lne app to convert Rimu source to HTML.
