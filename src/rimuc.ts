@@ -243,10 +243,10 @@ files.forEach(function (infile): void {
 if (errors) {
   process.exit(1)
 }
-html = html.trim() + '\n'
+html = html.trim()
 if (outfile) {
   fs.writeFileSync(outfile, html)
 }
 else {
-  console.log(html)
+  process.stdout.write(html)
 }

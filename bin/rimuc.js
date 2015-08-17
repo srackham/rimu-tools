@@ -10,91 +10,7 @@
 var path = require('path');
 var fs = require('fs');
 var Rimu = require('rimu');
-var MANPAGE = 'NAME\n' +
-    '  rimuc - convert Rimu source to HTML\n' +
-    '\n' +
-    'SYNOPSIS\n' +
-    '  rimuc [OPTIONS...] [FILES...]\n' +
-    '\n' +
-    'DESCRIPTION\n' +
-    '  Reads Rimu source markup from stdin, converts them to HTML\n' +
-    '  then writes the HTML to stdout. If FILES are specified\n' +
-    '  the Rimu source is read from FILES. The contents of files\n' +
-    '  with an .html extension are passed directly to the output.\n' +
-    '\n' +
-    '  If a file named .rimurc exists in the user\'s home directory\n' +
-    '  then its contents is processed (with safeMode 0) after\n' +
-    '  --prepend sources but before any other inputs.\n' +
-    '  This behavior can be disabled with the --no-rimurc option.\n' +
-    '\n' +
-    'OPTIONS\n' +
-    '  -h, --help\n' +
-    '    Display help message.\n' +
-    '\n' +
-    '  -l, --lint\n' +
-    '    Check the Rimu source for inconsistencies and errors.\n' +
-    '\n' +
-    '  -o, --output OUTFILE\n' +
-    '    Write output to file OUTFILE instead of stdout.\n' +
-    '\n' +
-    '  -p, --prepend SOURCE\n' +
-    '    Process the SOURCE text before other inputs.\n' +
-    '    Rendered with safeMode 0.\n' +
-    '\n' +
-    '  --no-rimurc\n' +
-    '    Do not process .rimurc from the user\'s home directory.\n' +
-    '\n' +
-    '  -s, --styled\n' +
-    '    Include HTML header and footer and Bootstrap CSS styling in\n' +
-    '    output. If only one source file is specified and the --output option\n' +
-    '    is not used then the output is written to a same-named file with\n' +
-    '    an .html extension.\n' +
-    '\n' +
-    '  --safeMode NUMBER\n' +
-    '    Specifies how to process inline and block HTML elements.\n' +
-    '    --safeMode 0 renders raw HTML (default).\n' +
-    '    --safeMode 1 drops raw HTML.\n' +
-    '    --safeMode 2 replaces raw HTML with htmlReplacement option text.\n' +
-    '    --safeMode 3 renders raw HTML as text.\n' +
-    '\n' +
-    '  --htmlReplacement\n' +
-    '    A string that replaces embedded HTML when safeMode is set to 2.\n' +
-    '    Defaults to `<mark>replaced HTML</mark>`.\n' +
-    '\n' +
-    '  --title TITLE, --highlightjs, --mathjax, --toc, --section-numbers\n' +
-    '    Shortcuts for prepended styling macro definitions:\n' +
-    '    --prepend "{--title}=\'TITLE\'"\n' +
-    '    --prepend "{--highlightjs}=\'true\'"\n' +
-    '    --prepend "{--mathjax}=\'true\'"\n' +
-    '    --prepend "{--toc}=\'true\'"\n' +
-    '    --prepend "{--section-numbers}=\'true\'"\n' +
-    '\n' +
-    'STYLING MACROS AND CLASSES\n' +
-    '  The following macros and CSS classes are available when the\n' +
-    '  --styled option is used:\n' +
-    '\n' +
-    '  Macro name         Description\n' +
-    '  ______________________________________________________________\n' +
-    '  --title            HTML document title (1).\n' +
-    '  --highlightjs      Set to non-blank value to enable syntax\n' +
-    '                     highlighting with Highlight.js.\n' +
-    '  --mathjax          Set to a non-blank value to enable MathJax.\n' +
-    '  --toc              Set to a non-blank value to generate a\n' +
-    '                     table of contents (1).\n' +
-    '  --section-numbers  Apply h2 and h3 section numbering (1).\n' +
-    '  ______________________________________________________________\n' +
-    '  (1) Must be defined prior to header (--prepend or .rimurc).\n' +
-    '\n' +
-    '  CSS class        Description\n' +
-    '  ______________________________________________________________\n' +
-    '  verse            Verse format (paragraphs, division blocks).\n' +
-    '  sidebar          Sidebar format (paragraphs, division blocks).\n' +
-    '  no-print         Do not print.\n' +
-    '  dl-numbered      Number labeled list items.\n' +
-    '  dl-counter       Prepend dl item counter to element content.\n' +
-    '  ol-counter       Prepend ol item counter to element content.\n' +
-    '  ul-counter       Prepend ul item counter to element content.\n' +
-    '  ______________________________________________________________\n';
+var MANPAGE = "NAME\n  rimuc - convert Rimu source to HTML\n\nSYNOPSIS\n  rimuc [OPTIONS...] [FILES...]\n\nDESCRIPTION\n  Reads Rimu source markup from stdin, converts them to HTML\n  then writes the HTML to stdout. If FILES are specified\n  the Rimu source is read from FILES. The contents of files\n  with an .html extension are passed directly to the output.\n\n  If a file named .rimurc exists in the user's home directory\n  then its contents is processed (with safeMode 0) after\n  --prepend sources but before any other inputs.\n  This behavior can be disabled with the --no-rimurc option.\n\nOPTIONS\n  -h, --help\n    Display help message.\n\n  -l, --lint\n    Check the Rimu source for inconsistencies and errors.\n\n  -o, --output OUTFILE\n    Write output to file OUTFILE instead of stdout.\n\n  -p, --prepend SOURCE\n    Process the SOURCE text before other inputs.\n    Rendered with safeMode 0.\n\n  --no-rimurc\n    Do not process .rimurc from the user's home directory.\n\n  -s, --styled\n    Include HTML header and footer and Bootstrap CSS styling in\n    output. If only one source file is specified and the --output option\n    is not used then the output is written to a same-named file with\n    an .html extension.\n\n  --safeMode NUMBER\n    Specifies how to process inline and block HTML elements.\n    --safeMode 0 renders raw HTML (default).\n    --safeMode 1 drops raw HTML.\n    --safeMode 2 replaces raw HTML with htmlReplacement option text.\n    --safeMode 3 renders raw HTML as text.\n\n  --htmlReplacement\n    A string that replaces embedded HTML when safeMode is set to 2.\n    Defaults to '<mark>replaced HTML</mark>'.\n\n  --title TITLE, --highlightjs, --mathjax, --toc, --section-numbers\n    Shortcuts for prepended styling macro definitions:\n    --prepend \"{--title}='TITLE'\"\n    --prepend \"{--highlightjs}='true'\"\n    --prepend \"{--mathjax}='true'\"\n    --prepend \"{--toc}='true'\"\n    --prepend \"{--section-numbers}='true'\"\n\nSTYLING MACROS AND CLASSES\n  The following macros and CSS classes are available when the\n  --styled option is used:\n\n  Macro name         Description\n  ______________________________________________________________\n  --title            HTML document title (1).\n  --highlightjs      Set to non-blank value to enable syntax\n                     highlighting with Highlight.js.\n  --mathjax          Set to a non-blank value to enable MathJax.\n  --toc              Set to a non-blank value to generate a\n                     table of contents (1).\n  --section-numbers  Apply h2 and h3 section numbering (1).\n  ______________________________________________________________\n  (1) Must be defined prior to header (--prepend or .rimurc).\n\n  CSS class        Description\n  ______________________________________________________________\n  verse            Verse format (paragraphs, division blocks).\n  sidebar          Sidebar format (paragraphs, division blocks).\n  no-print         Do not print.\n  dl-numbered      Number labeled list items.\n  dl-counter       Prepend dl item counter to element content.\n  ol-counter       Prepend ol item counter to element content.\n  ul-counter       Prepend ul item counter to element content.\n  ______________________________________________________________\n";
 // Helpers.
 function die(message) {
     console.error(message);
@@ -230,10 +146,10 @@ files.forEach(function (infile) {
 if (errors) {
     process.exit(1);
 }
-html = html.trim() + '\n';
+html = html.trim();
 if (outfile) {
     fs.writeFileSync(outfile, html);
 }
 else {
-    console.log(html);
+    process.stdout.write(html);
 }

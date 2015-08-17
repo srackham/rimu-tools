@@ -19,25 +19,25 @@ function rimuc_equal(t, source, expected, options, message) {
 test('rimuc', function(t) {
   t.plan(14);
 
-  rimuc_equal(t, '*Hello World!*', '<p><em>Hello World!</em></p>\n\n', '',
+  rimuc_equal(t, '*Hello World!*', '<p><em>Hello World!</em></p>', '',
     'rimuc basic test');
 
-  rimuc_equal(t, '{x}', '<p>X</p>\n\n', '--prepend "{x}=\'X\'"',
+  rimuc_equal(t, '{x}', '<p>X</p>', '--prepend "{x}=\'X\'"',
     'rimuc --prepend');
 
-  rimuc_equal(t, '<br>', '<p><br></p>\n\n', '--safe-mode 0',
+  rimuc_equal(t, '<br>', '<p><br></p>', '--safe-mode 0',
     'rimuc --safe-mode 0');
 
-  rimuc_equal(t, '<br>', '<p></p>\n\n', '--safe-mode 1',
+  rimuc_equal(t, '<br>', '<p></p>', '--safe-mode 1',
     'rimuc --safe-mode 1');
 
-  rimuc_equal(t, '<br>', '<p><mark>replaced HTML</mark></p>\n\n', '--safe-mode 2',
+  rimuc_equal(t, '<br>', '<p><mark>replaced HTML</mark></p>', '--safe-mode 2',
     'rimuc --safe-mode 2');
 
-  rimuc_equal(t, '<br>', '<p>&lt;br&gt;</p>\n\n', '--safe-mode 3',
+  rimuc_equal(t, '<br>', '<p>&lt;br&gt;</p>', '--safe-mode 3',
     'rimuc --safe-mode 3');
 
-  rimuc_equal(t, '<br>', '<p>X</p>\n\n', '--safe-mode 2 --htmlReplacement X',
+  rimuc_equal(t, '<br>', '<p>X</p>', '--safe-mode 2 --htmlReplacement X',
     'rimuc --htmlReplacement');
 
   rimuc_exec('', '--help', function(actual) {
