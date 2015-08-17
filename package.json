@@ -41,12 +41,10 @@
     "typescript": "^1.5.3"
   },
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "lint": "tslint src/rimuc.ts",
-    "lint:watch": "nodemon --ext ts --watch src --exec 'npm run lint'",
+    "build": "parallelshell 'tsc' 'tslint src/rimuc.ts'",
+    "build:watch": "nodemon --ext ts --watch src --exec 'npm run build'",
     "test": "node test/test.js | faucet",
     "test:watch": "nodemon --ext js --watch test --watch bin --exec 'npm run test'",
-    "watch": "parallelshell 'npm run build:watch' 'npm run test:watch' 'npm run lint:watch'"
+    "watch": "parallelshell 'npm run build:watch' 'npm run test:watch'"
   }
 }
