@@ -29,21 +29,21 @@
     "url": "https://github.com/srackham/rimu-tools.git"
   },
   "dependencies": {
-    "rimu": "^6.0.0"
+    "rimu": "^6.1.0"
   },
   "devDependencies": {
     "faucet": "0.0.1",
-    "nodemon": "^1.4.1",
+    "onchange": "^2.0.0",
     "parallelshell": "^2.0.0",
     "tape": "^4.2.0",
-    "tslint": "^2.4.2",
+    "tslint": "^2.4.3",
     "typescript": "^1.5.3"
   },
   "scripts": {
     "build": "parallelshell 'tsc' 'tslint src/rimuc.ts' && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
-    "build:watch": "nodemon --ext ts --watch src --exec 'npm run build'",
+    "build:watch": "onchange 'src/*.ts' -- npm run build",
     "test": "node test/test.js | faucet",
-    "test:watch": "nodemon --ext js --watch test --watch bin --exec 'npm run test'",
+    "test:watch": "onchange 'test/*.js' 'bin/*.js' -- npm run test",
     "watch": "parallelshell 'npm run build:watch' 'npm run test:watch'"
   }
 }
