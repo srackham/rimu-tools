@@ -40,9 +40,9 @@
     "typescript": "^1.5.3"
   },
   "scripts": {
-    "build": "parallelshell 'tsc' 'tslint src/rimuc.ts' && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
+    "build": "npm test && tsc && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
     "build:watch": "onchange 'src/*.ts' -- npm run build",
-    "test": "node test/test.js | faucet",
+    "test": "(node test/test.js | faucet) && tslint src/rimuc.ts",
     "test:watch": "onchange 'test/*.js' 'bin/*.js' -- npm run test",
     "watch": "parallelshell 'npm run build:watch' 'npm run test:watch'"
   }
