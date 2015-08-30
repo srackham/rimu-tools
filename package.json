@@ -36,7 +36,7 @@
     "onchange": "^2.0.0",
     "parallelshell": "^2.0.0",
     "tape": "^4.2.0",
-    "tslint": "^2.4.3",
+    "tslint": "^2.4.5",
     "typescript": "^1.5.3"
   },
   "scripts": {
