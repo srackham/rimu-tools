@@ -40,7 +40,7 @@
     "typescript": "^1.5.3"
   },
   "scripts": {
-    "build": "npm test && tsc && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
+    "build": "tsc && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
     "build:watch": "onchange 'src/*.ts' -- npm run build",
     "test": "(node test/test.js | faucet) && tslint src/rimuc.ts",
     "test:watch": "onchange 'test/*.js' 'bin/*.js' -- npm run test",
