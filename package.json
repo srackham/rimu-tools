@@ -42,6 +42,7 @@
   "scripts": {
     "build": "tsc && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
     "build:watch": "onchange 'src/*.ts' -- npm run build",
+    "publish": "npm publish",
     "push": "git push -u --tags origin master",
     "test": "(node test/test.js | faucet) && tslint src/rimuc.ts",
     "test:watch": "onchange 'test/*.js' 'bin/*.js' -- npm run test",
