@@ -3,11 +3,11 @@
 This package contains the following tools for editing and compiling
 [Rimu Markup](http://srackham.github.io/rimu/):
 
-- `rimuc`, a command-line app to convert Rimu Makup to HTML.
+- `rimuc`, a command-line application to convert Rimu Markup to HTML.
 - `rimu.vim`, a syntax highlighter for the Vim editor.
 
 These tools were previously included in the [Rimu
-Markup package](https://github.com/srackham/rimu) (versions 6.x.x and
+Markup package](http://srackham.github.io/rimu/) (versions 6.x.x and
 older).
 
 
@@ -166,7 +166,7 @@ to the other source files. The header and footer ensures:
 
 ## Vim syntax file
 The Rimu distribution includes a [syntax
-highlighte](https://raw.github.com/srackham/rimu-tools/master/tools/vim/syntax/rimu.vim)
+highlighter](https://raw.github.com/srackham/rimu-tools/master/tools/vim/syntax/rimu.vim)
 for the Vim editor. Copy `rimu.vim` to your `$HOME/.vim/syntax`
 directory and then use the Vim `:set syn=rimu` command or put this
 line in your `$HOME/.vimrc` file to enable Rimu syntax highlighting:
