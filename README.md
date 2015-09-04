@@ -1,10 +1,10 @@
 # Rimu Markup Tools
 
-This package contains the following tools for editing and compiling
-[Rimu Markup](http://srackham.github.io/rimu/):
+This package contains tools for editing and compiling [Rimu
+Markup](http://srackham.github.io/rimu/):
 
-- `rimuc`, a command-line application to convert Rimu Markup to HTML.
-- `rimu.vim`, a syntax highlighter for the Vim editor.
+- `rimuc`: A command-line application to convert Rimu Markup to HTML.
+- `rimu.vim`: A syntax highlighter file for the Vim editor.
 
 These tools were previously included in the [Rimu
 Markup package](http://srackham.github.io/rimu/) (versions 6.x.x and
@@ -15,6 +15,9 @@ older).
 
     sudo npm install -g rimu-tools
 
+This installs the `rimuc` command.  Run `rimuc --help` to view the
+`rimuc` manpage.
+
 
 ## `rimuc` command
 _rimuc_ is a Node.js command-line tool that converts Rimu source to
@@ -22,8 +25,6 @@ HTML.
 
 See also the [Rimu Markup
 reference](http://srackham.github.io/rimu/reference.html).
-
-Run `rimuc --help` to view the `rimuc` manpage:
 
 ```
 NAME
