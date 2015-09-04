@@ -46,6 +46,8 @@
     "push": "git push -u --tags origin master",
     "test": "(node test/test.js | faucet) && tslint src/rimuc.ts",
     "test:watch": "onchange 'test/*.js' 'bin/*.js' -- npm run test",
-    "watch": "parallelshell 'npm run build:watch' 'npm run test:watch'"
+    "watch": "parallelshell 'npm run build:watch' 'npm run test:watch'",
+    "// Set package version number e.g. npm run version -- 1.0.0": "",
+    "version": "npm run build && npm run test && npm version --no-git-tag-version"
   }
 }
