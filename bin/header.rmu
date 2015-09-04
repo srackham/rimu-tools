@@ -79,6 +79,18 @@
   .dl-horizontal > dd {
     margin-top: 1.0em;
   }
+  ol {
+    list-style-type: decimal;
+  }
+  ol > li > ol {
+    list-style-type: lower-roman;
+  }
+  ol > li > ol > li > ol {
+    list-style-type: lower-latin;
+  }
+  ol > li > ol > li > ol > li > ol {
+    list-style-type: lower-greek;
+  }
   /* highlight.js tweaks. */
   pre > code {
     background-color: inherit;
