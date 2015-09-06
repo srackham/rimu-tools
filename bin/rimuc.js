@@ -5,6 +5,7 @@
   Run 'node rimu.js --help' for details.
 */
 ///<reference path='node.d.ts' />
+///<reference path='rimu.d.ts' />
 var path = require('path');
 var fs = require('fs');
 var Rimu = require('rimu');

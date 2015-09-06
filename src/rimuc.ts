@@ -7,6 +7,8 @@
 */
 
 ///<reference path='node.d.ts' />
+///<reference path='rimu.d.ts' />
+
 import path = require('path')
 import fs = require('fs')
 import Rimu = require('rimu')
