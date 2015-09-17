@@ -6,6 +6,7 @@
     "outDir": "./bin"
   },
   "files": [
+    "./src/node.d.ts",
     "./src/rimuc.ts"
   ]
 }
