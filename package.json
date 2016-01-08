@@ -1,55 +1,5 @@
 {
   "name": "rimu-tools",
-  "author": "Stuart Rackham <srackham@gmail.com>",
-  "version": "1.0.1",
-  "description": "Tools for editing and processing Rimu Markup",
-  "keywords": [
-    "rimu",
-    "markdown"
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/srackham/rimu-tools/master/LICENSE"
-    }
-  ],
-  "engines": {
-    "node": ">=0.8"
-  },
-  "bin": {
-    "rimuc": "bin/rimuc.js"
-  },
-  "files": [
-    "bin/rimuc.js",
-    "bin/header.rmu",
-    "bin/footer.rmu"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/srackham/rimu-tools.git"
-  },
-  "dependencies": {
-    "rimu": "^6.1.0"
-  },
-  "devDependencies": {
-    "faucet": "0.0.1",
-    "onchange": "^2.0.0",
-    "parallelshell": "^2.0.0",
-    "tape": "^4.2.0",
-    "tslint": "^2.5.0-beta",
-    "typescript": "^1.6.2"
-  },
-  "scripts": {
-    "build": "tsc && sed -i '1 s/^\\/\\/ //' bin/rimuc.js",
-    "build:watch": "onchange 'src/*.ts' -- npm run build",
-    "publish": "npm publish",
-    "push": "git push -u --tags origin master",
-    "// Set git tag e.g. npm run tag -- 1.0.0": "",
-    "tag": "git tag -a -m 'Version tag'",
-    "test": "(node test/test.js | faucet) && tslint src/rimuc.ts",
-    "test:watch": "onchange 'test/*.js' 'bin/*.js' -- npm run test",
-    "watch": "parallelshell 'npm run build:watch' 'npm run test:watch'",
-    "// Set package version number e.g. npm run version -- 1.0.0": "",
-    "version": "npm run build && npm run test && npm version --no-git-tag-version"
-  }
+  "version": "1.0.2",
+  "description": "DEPRECATED PACKAGE",
 }
